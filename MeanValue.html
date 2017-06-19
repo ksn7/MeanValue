@@ -39,9 +39,9 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     
     # Prep the function graph, points for a and b, the line from a to b, and calculate the slope
     graph_f = plot( f, x_min, x_max )
-    pt_a = point( (a, f(a)), color = "red", size = 20 )
-    pt_b = point( (b, f(b)), color = "red", size = 20 )
-    secant = line([ (a, f(a)), (b, f(b)) ], color = "red")
+    pts = point( (a, f(a)), color = "red", size = 20 )
+    pts += point( (b, f(b)), color = "red", size = 20 )
+    lines = line([ (a, f(a)), (b, f(b)) ], color = "red")
     slope = ( f(b) - f(a) ) / (b - a)
 
     # Loop through until you find a point that matches the slope
@@ -51,23 +51,32 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     while max <= b:
         try:
             c = find_root( diff(f,x) - slope, min, max)
-            break
-            print c
+            zeroes.append(c)
+            min = max
+            max += 0.5
         except:
             max += 0.5
+            
     # Define the point c and the tangent line at c
-    pt_c = point( (c, f(c)), color = "green", size = 20 )
-    
-    tangent = plot( diff(f,x)(c) * (x - c) + f(c), x, -6, 2, color = "green")
+    for j in range(len(zeroes)):
+        c = zeroes[j]
+        pts += point( (c, f(c)), color = "green", size = 20 )
+        lines += plot( diff(f,x)(c) * (x - c) + f(c), x, -6, 2, color = "green")
      
     # Combine all of the items to be graphed and show them                                                                            
-    graph = graph_f + pt_a + pt_b + secant + pt_c + tangent
+    graph = graph_f + pts + lines
     graph.show()
+    
+    # Print all of the values for which the tangent line is parallel
+    print "The values of c for which the tangent line is parallel to the line between points a and b are "
+    for j in range(len(zeroes)):
+        c = zeroes[j]
+        print "( " + str(c) + ", " + str(f(c)) + " )"
     
 </script>
 </div>
 
 <hr>
-Last modified on June 15th, 2017.
+Last modified on June 19th, 2017.
 </body>
 </html>
