@@ -28,9 +28,9 @@ $(function () {
 <script type="text/x-sage">
 
 @interact( layout = [ ['func'], ['a', 'b'], ['x_min', 'x_max'] ])
-def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "function", width = 20), 
-        a = input_box( default = -5, label = "lower point", width = 5), 
-        b = input_box( default = 0, label = "upper point", width = 5), 
+def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "f(x) = ", width = 20), 
+        a = input_box( default = -5, label = "a", width = 5), 
+        b = input_box( default = 0, label = "b", width = 5), 
         x_min = input_box( default = -6, label = "x min", width = 5), 
         x_max = input_box( default = 2, label = "x max", width = 5) ):
             
@@ -70,8 +70,7 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     # Print all of the values for which the tangent line is parallel
     print "The values of c for which the tangent line is parallel to the line between points a and b are "
     for j in range(len(zeroes)):
-        c = zeroes[j]
-        print "( " + str(c) + ", " + str(f(c)) + " )"
+        print zeroes[j]
     
 </script>
 </div>
