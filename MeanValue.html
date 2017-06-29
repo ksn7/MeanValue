@@ -56,14 +56,13 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     f = func.function(x)
     
     # Prep the function graph, points for a and b, the line from a to b, and calculate the slope
-    graph_f = plot( f, x_min, x_max )
+    graph_f = plot( f, x_min, x_max, color = "#ccd9ff" )
+    graph_f += plot( f, a, b, color = "#0033cc" )
     pts = point( (a, f(a)), color = "red", size = 20 )
     pts += point( (a, 0), color = "red", size = 30 )
     pts += point( (b, f(b)), color = "red", size = 20 )
     pts += point( (b, 0), color = "red", size = 30 )
     lines = line([ (a, f(a)), (b, f(b)) ], color = "red")
-    lines += line([ (a, 0), (a, f(a)) ], color = "red", linestyle = '--' )
-    lines += line([ (b, 0), (b, f(b)) ], color = "red", linestyle = '--' )
     slope = ( f(b) - f(a) ) / (b - a)
 
     # Loop through until you find a point that matches the slope
@@ -84,6 +83,7 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
         c = zeroes[j]
         pts += point( (c, f(c)), color = "green", size = 20 )
         pts += point( (c, 0), color = "green", size = 30 )
+        lines += line([ (c, 0), (c, f(c))], color = "green", linestyle = '--' )
         lines += plot( diff(f,x)(c) * (x - c) + f(c), x, -6, 2, color = "green")
      
     # Combine all of the items to be graphed and show them                                                                            
@@ -99,6 +99,6 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
 </div>
 
 <hr>
-Last modified on June 28th, 2017.
+Last modified on June 29th, 2017.
 </body>
 </html>
