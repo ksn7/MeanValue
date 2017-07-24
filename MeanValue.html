@@ -91,14 +91,18 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     graph.show()
     
     # Print all of the values for which the tangent line is parallel
-    print "The values of c for which the tangent line is parallel to the line between points a and b are "
+    text1 = ""
     for j in range(len(zeroes)):
-        print zeroes[j]
+        if j == len(zeroes) - 1 :
+            text1 += str( zeroes[j] )
+        else:
+            text1 += str( zeroes[j] ) + ", "
+    pretty_print( "The values of c for which the tangent line is parallel \nto the line between points a and b are " + text1 )
     
 </script>
 </div>
 
 <hr>
-Last modified on June 29th, 2017.
+Last modified on July 24th, 2017.
 </body>
 </html>
