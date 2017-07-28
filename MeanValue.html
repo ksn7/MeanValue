@@ -72,8 +72,9 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     while max <= b:
         try:
             c = find_root( diff(f,x) - slope, min, max)
-            zeroes.append(c)
-            min = max
+            if c not in zeroes:
+                zeroes.append(c)
+            min = max + 10^-12
             max += 0.5
         except:
             max += 0.5
@@ -84,7 +85,7 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
         pts += point( (c, f(c)), color = "green", size = 20 )
         pts += point( (c, 0), color = "green", size = 30 )
         lines += line([ (c, 0), (c, f(c))], color = "green", linestyle = '--' )
-        lines += plot( diff(f,x)(c) * (x - c) + f(c), x, -6, 2, color = "green")
+        lines += plot( diff(f,x)(c) * (x - c) + f(c), x, x_min, x_max, color = "green")
      
     # Combine all of the items to be graphed and show them                                                                            
     graph = graph_f + pts + lines
@@ -97,12 +98,12 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
             text1 += str( zeroes[j] )
         else:
             text1 += str( zeroes[j] ) + ", "
-    pretty_print( "The values of c for which the tangent line is parallel \nto the line between points a and b are " + text1 )
+    pretty_print( "The value(s) of c for which the tangent line is parallel \nto the line between points a and b are " + text1 )
     
 </script>
 </div>
 
 <hr>
-Last modified on July 24th, 2017.
+Last modified on July 28th, 2017.
 </body>
 </html>
