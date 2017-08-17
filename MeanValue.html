@@ -47,11 +47,11 @@ $(function () {
 <script type="text/x-sage">
 
 @interact( layout = [ ['func'], ['a', 'b'], ['x_min', 'x_max'] ])
-def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "f(x) = ", width = 20), 
-        a = input_box( default = -5, label = "a", width = 5), 
-        b = input_box( default = 0, label = "b", width = 5), 
-        x_min = input_box( default = -6, label = "x min", width = 5), 
-        x_max = input_box( default = 2, label = "x max", width = 5) ):
+def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "$f(x) = $", width = 20), 
+        a = input_box( default = -5, label = "$a$", width = 5), 
+        b = input_box( default = 0, label = "$b$", width = 5), 
+        x_min = input_box( default = -6, label = "$x_{min}$", width = 5), 
+        x_max = input_box( default = 2, label = "$x_{max}$", width = 5) ):
             
     # Avoid the deprecation warning
     f = func.function(x)
@@ -96,16 +96,16 @@ def mean_value( func = input_box( default = -1 * (x + 2)^3 + 6*x + 15, label = "
     text1 = ""
     for j in range(len(zeroes)):
         if j == len(zeroes) - 1 :
-            text1 += str( zeroes[j] )
+            text1 += "%6.7f" %zeroes[j]
         else:
-            text1 += str( zeroes[j] ) + ", "
+            text1 += "%6.7f, " %zeroes[j]
     pretty_print( "The value(s) of c for which the tangent line is parallel \nto the line between points a and b are " + text1 )
     
 </script>
 </div>
 
 <hr>
-Last modified on July 28th, 2017.
+Last modified on August 17th, 2017.
 </body>
 </html>
 
